@@ -67,7 +67,7 @@ def top_three_articles():
 	#Display header and results for Problem 1
 	print('1. Top Three Articles by views')
 	for i in top_three:
-		print(i[0] + ' ---- ' + str(i[1]) + ' views')
+		print('    ' + i[0] + ' ---- ' + str(i[1]) + ' views')
 	print(' ') # Display line break
 
 
@@ -83,7 +83,7 @@ def popular_authors():
 	#display header and results for problem 2
 	print('2. Most Popular article authors of all time')
 	for i in author_popularity:
-		print(i[0] + ' ---- ' + str(i[1]) + ' views')
+		print('    ' + i[0] + ' ---- ' + str(i[1]) + ' views')
 	print(' ') #display line break
 
 
@@ -95,7 +95,7 @@ def high_error_days():
 	#Display header and results for problem 3
 	print('3. Days which more than 1% request lead to error')
 	for i in high_error_results:
-		print(i[0].strftime('%B %d, %Y') + ' -- ' + i[1] + '%' + ' errors')
+		print('    ' + i[0].strftime('%B %d, %Y') + ' -- ' + i[1] + '%' + ' errors')
 	print(' ')#Display line break 
 
 
