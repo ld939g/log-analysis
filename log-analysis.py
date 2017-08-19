@@ -1,45 +1,45 @@
 #!/usr/bin/env python3
 
-#Log Analysis Project
+# Log Analysis Project
 #Udacity Full-Stack Nanodegree
 
-#importing Postgresql library
+# importing Postgresql library
 import psycopg2
 
-#import datetime.date module for 
-#problem 3
+# import datetime.date module for
+# problem 3
 from datetime import date
 
 
 
-''' In this one I have created VIEWS within the news database
+'''In this one I have created VIEWS within the news database
 to answer the problem set
 
 Problem 3:
 On which days did more than 1% of requests lead to errors?
-CREATE VIEW BRQSTS AS 
-SELECT time::timestamp::date, 
-COUNT (*) as wrqsts 
+CREATE VIEW BRQSTS AS
+SELECT time::timestamp::date,
+COUNT (*) as wrqsts
 FROM log
 WHERE status LIKE '404 NOT FOUND'
-GROUP BY time::timestamp::date 
+GROUP BY time::timestamp::date
 ORDER BY time ASC;
 
-CREATE VIEW timerqsts AS 
-SELECT time::timestamp::date, 
-COUNT (*) as requests 
+CREATE VIEW timerqsts AS
+SELECT time::timestamp::date,
+COUNT (*) as requests
 FROM log 
 GROUP BY time::timestamp::date;
 
-CREATE VIEW error_view AS 
-SELECT timerqsts.time, 
-(cast(BRQSTS.wrqsts as float)/cast(timerqsts.requests as float))*100 
-AS error 
-FROM BRQSTS 
+CREATE VIEW error_view AS
+SELECT timerqsts.time,
+(cast(BRQSTS.wrqsts as float)/cast(timerqsts.requests as float))*100
+AS error
+FROM BRQSTS
 JOIN timerqsts on BRQSTS.time = timerqsts.time
 ORDER BY error;''' 
 
-#Global database name
+# Global database name
 DBNAME = 'news'
 
 
@@ -57,7 +57,7 @@ def execute_Query(query):
 		Print("Unable to connect to database")
 
 
-#Problem 1: What are the most popular three articles of all time?
+# Problem 1: What are the most popular three articles of all time?
 def top_three_articles():
 	query = """SELECT articles.title, COUNT (*) as views FROM 
 	articles JOIN log ON articles.slug = SUBSTRING(path, 10) 
@@ -71,7 +71,7 @@ def top_three_articles():
 	print(' ') # Display line break
 
 
-#Problem 2: Who are the most popular article authors of all time?
+# Problem 2: Who are the most popular article authors of all time?
 def popular_authors():
 	query = """SELECT authors.name, COUNT (*) as views 
 	FROM articles INNER JOIN authors 
@@ -87,7 +87,7 @@ def popular_authors():
 	print(' ') #display line break
 
 
-#Problem 3. On which days did more than 1% of requests lead to errors?
+# Problem 3. On which days did more than 1% of requests lead to errors?
 def high_error_days():
 	query = """SELECT time, ROUND((error)::DECIMAL, 2)::TEXT
 	FROM error_view where error > 1;"""
