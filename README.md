@@ -23,7 +23,7 @@ In this project I was tasked to create a reporting tool which can print reports 
 3. Download the [data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip) from here.
 4. Unzip this file after downloading it. The file inside is called newsdata.sql.
 5. Copy the newsdata.sql file and content of this current repository, by either downloading or cloning it from
-  [Here](https://github.com/sagarchoudhary96/Log-Analysis)
+  [Here](https://github.com/vamshi1020/log-analysis)
 
 
 #### Launching the Virtual Machine:
